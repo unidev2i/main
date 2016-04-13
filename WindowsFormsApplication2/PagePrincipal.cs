@@ -153,7 +153,9 @@ namespace WindowsFormsApplication2
 
             drawGraph(w);
             drawWeb(z);
-
+            chart1.Visible = true;
+            chart2.Visible = true;
+            chart3.Visible = true;
             //chart1.ChartAreas[0].AxisX.Maximum = 100;
 
         }
