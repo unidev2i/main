@@ -2,10 +2,10 @@
 -- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Client :  127.0.0.1
--- Généré le :  Ven 01 Avril 2016 à 08:28
--- Version du serveur :  5.6.17
--- Version de PHP :  5.5.12
+-- Host: 127.0.0.1
+-- Generation Time: Apr 01, 2016 at 03:13 PM
+-- Server version: 5.6.17
+-- PHP Version: 5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,34 +17,34 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `mydb`
+-- Database: `mydb`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `classe`
+-- Table structure for table `classe`
 --
 
 CREATE TABLE IF NOT EXISTS `classe` (
   `idClasse` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
-  `Niveau` enum('seconde','premiere','terminale','') CHARACTER SET utf8 NOT NULL,
-  `numClasse` tinyint(3) unsigned NOT NULL COMMENT 'ex: 3 => seconde  3',
+  `Promotion` year(4) NOT NULL,
+  `Location` varchar(255) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`idClasse`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='une ligne pour chaque classe' AUTO_INCREMENT=3 ;
 
 --
--- Contenu de la table `classe`
+-- Dumping data for table `classe`
 --
 
-INSERT INTO `classe` (`idClasse`, `Niveau`, `numClasse`) VALUES
-(1, 'seconde', 1),
-(2, 'seconde', 2);
+INSERT INTO `classe` (`idClasse`, `Promotion`, `Location`) VALUES
+(1, 2001, '1'),
+(2, 2001, '2');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `eleve`
+-- Table structure for table `eleve`
 --
 
 CREATE TABLE IF NOT EXISTS `eleve` (
@@ -54,19 +54,23 @@ CREATE TABLE IF NOT EXISTS `eleve` (
   `idClasse` tinyint(3) unsigned NOT NULL,
   PRIMARY KEY (`idEleve`),
   KEY `idClasse` (`idClasse`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='une ligne pour chaque élève' AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='une ligne pour chaque élève' AUTO_INCREMENT=8 ;
 
 --
--- Contenu de la table `eleve`
+-- Dumping data for table `eleve`
 --
 
 INSERT INTO `eleve` (`idEleve`, `Nom`, `Prenom`, `idClasse`) VALUES
-(2, 'Daniel', 'jack', 2);
+(2, 'Daniel', 'jack', 1),
+(4, 'dumortier', 'paul', 1),
+(5, 'Duzamel', 'baptiste', 1),
+(6, 'Morand', 'maxence', 1),
+(7, 'Vancayzeele', 'matthieu', 1);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `note`
+-- Table structure for table `note`
 --
 
 CREATE TABLE IF NOT EXISTS `note` (
@@ -77,10 +81,10 @@ CREATE TABLE IF NOT EXISTS `note` (
   `maxNote` varchar(10) NOT NULL,
   PRIMARY KEY (`ID`),
   KEY `idTp` (`idPdf`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='une ligne pour chaque note' AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='une ligne pour chaque note' AUTO_INCREMENT=52 ;
 
 --
--- Contenu de la table `note`
+-- Dumping data for table `note`
 --
 
 INSERT INTO `note` (`ID`, `idPdf`, `idCompetence`, `Note`, `maxNote`) VALUES
@@ -89,39 +93,98 @@ INSERT INTO `note` (`ID`, `idPdf`, `idCompetence`, `Note`, `maxNote`) VALUES
 (5, 4, 'CP2.3', '5', '10'),
 (6, 2, 'CP2.5', '6', '6'),
 (7, 4, 'CP2.3', '42', '55'),
-(8, 4, 'CP2.3', '25', '47');
+(8, 4, 'CP2.3', '25', '47'),
+(9, 18, 'CP3.1', '5.5', '8'),
+(10, 10, 'CP1.1', '4', '5.5'),
+(11, 10, 'CP1.2', '9', '16'),
+(12, 10, 'CP1.3', '2', '6'),
+(13, 11, 'CP1.1', '2', '5.5'),
+(14, 11, 'CP1.2', '10', '16'),
+(15, 11, 'CP1.3', '3', '6'),
+(16, 14, 'CP2.1', '5', '7'),
+(17, 14, 'CP2.2', '4', '8'),
+(18, 14, 'CP2.3', '2', '7'),
+(19, 15, 'CP2.1', '6', '7'),
+(20, 15, 'CP2.2', '3', '8'),
+(21, 15, 'CP2.3', '3.5', '7'),
+(22, 16, 'CP2.1', '5', '7'),
+(23, 16, 'CP2.2', '3', '8'),
+(24, 16, 'CP2.3', '3', '7'),
+(25, 17, 'CP2.1', '5.5', '7'),
+(26, 17, 'CP2.2', '4.5', '8'),
+(27, 17, 'CP2.3', '3.5', '7'),
+(28, 18, 'CP3.3', '9.5', '14'),
+(29, 18, 'CP2.2', '4', '9'),
+(30, 18, 'CP1.1', '2', '3.5'),
+(31, 19, 'CP3.3', '6', '14'),
+(32, 19, 'CP2.2', '5', '9'),
+(33, 19, 'CP1.1', '2', '3.5'),
+(34, 20, 'CP3.3', '8', '14'),
+(35, 20, 'CP2.2', '4', '9'),
+(36, 20, 'CP1.1', '1', '3.5'),
+(37, 21, 'CP3.3', '6', '14'),
+(38, 21, 'CP2.2', '9', '9'),
+(39, 21, 'CP1.1', '3', '3.5'),
+(40, 22, 'CP1.2', '2', '5'),
+(41, 22, 'CP2.3', '7', '10'),
+(42, 22, 'CP3.1', '10', '15'),
+(43, 23, 'CP1.2', '4', '5'),
+(44, 23, 'CP2.3', '6', '10'),
+(45, 23, 'CP3.1', '13', '15'),
+(46, 24, 'CP1.2', '4', '5'),
+(47, 24, 'CP2.3', '8', '10'),
+(48, 24, 'CP3.1', '13', '15'),
+(49, 25, 'CP1.2', '2', '5'),
+(50, 25, 'CP2.3', '3', '10'),
+(51, 25, 'CP3.1', '6', '15');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `tp`
+-- Table structure for table `tp`
 --
 
 CREATE TABLE IF NOT EXISTS `tp` (
   `idPdf` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `idTp` varchar(10) NOT NULL COMMENT 'ex: 2 => TP2',
+  `idTp` varchar(50) NOT NULL COMMENT 'ex: 2 => TP2',
   `idEleve` int(10) unsigned NOT NULL,
   `idcorrecteur` int(10) unsigned NOT NULL,
-  `date` date NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`idPdf`),
   KEY `idPdf` (`idPdf`),
   KEY `idEleve` (`idEleve`),
   KEY `idcorrecteur` (`idcorrecteur`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='une ligne pour chaque PDF de lu' AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='une ligne pour chaque PDF de lu' AUTO_INCREMENT=26 ;
 
 --
--- Contenu de la table `tp`
+-- Dumping data for table `tp`
 --
 
 INSERT INTO `tp` (`idPdf`, `idTp`, `idEleve`, `idcorrecteur`, `date`) VALUES
-(2, '4', 2, 1, '2016-03-02'),
-(4, '2', 2, 1, '2016-03-10'),
-(5, '2', 2, 1, '2016-03-31');
+(2, '4', 2, 1, '2016-03-01 23:00:00'),
+(4, '2', 2, 1, '2016-03-09 23:00:00'),
+(5, '2', 2, 1, '2016-03-30 22:00:00'),
+(10, 'TP5', 4, 1, '2016-03-08 23:00:00'),
+(11, 'TP5', 5, 1, '2016-03-08 23:00:00'),
+(12, 'TP carross', 2, 4, '2016-04-05 22:00:00'),
+(13, 'TP verrin', 2, 3, '2016-04-11 22:00:00'),
+(14, 'TP portail', 4, 2, '2016-03-01 23:00:00'),
+(15, 'TP portail', 5, 2, '2016-03-08 23:00:00'),
+(16, 'TP portail', 6, 2, '2016-03-08 23:00:00'),
+(17, 'TP portail', 7, 2, '2016-03-08 23:00:00'),
+(18, 'TP verin', 4, 3, '2016-03-29 22:00:00'),
+(19, 'TP verin', 5, 3, '2016-03-29 22:00:00'),
+(20, 'TP verin', 6, 3, '2016-03-29 22:00:00'),
+(21, 'TP verin', 7, 3, '2016-03-29 22:00:00'),
+(22, 'TP carrosserie', 4, 4, '2016-07-16 22:00:00'),
+(23, 'Tp carrosserie', 5, 4, '2016-07-16 22:00:00'),
+(24, 'TP carrosserie', 6, 4, '2016-07-16 22:00:00'),
+(25, 'TP carrosserie', 7, 4, '2016-07-16 22:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
@@ -130,35 +193,33 @@ CREATE TABLE IF NOT EXISTS `user` (
   `Password` varchar(32) NOT NULL,
   `Admin` tinyint(1) DEFAULT '0' COMMENT 'si 1 => admin',
   PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='une ligne pour chaque utilisateur (prof)' AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='une ligne pour chaque utilisateur (prof)' AUTO_INCREMENT=2 ;
 
 --
--- Contenu de la table `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`idUser`, `Login`, `Password`, `Admin`) VALUES
-(1, 'Atogue', 'azerty', 1),
-(3, 'noadmin', 'root', 0),
-(4, '', '', 1);
+(1, 'Atogue', 'azerty', 1);
 
 --
--- Contraintes pour les tables exportées
+-- Constraints for dumped tables
 --
 
 --
--- Contraintes pour la table `eleve`
+-- Constraints for table `eleve`
 --
 ALTER TABLE `eleve`
   ADD CONSTRAINT `fk_classe_eleve` FOREIGN KEY (`idClasse`) REFERENCES `classe` (`idClasse`) ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `note`
+-- Constraints for table `note`
 --
 ALTER TABLE `note`
   ADD CONSTRAINT `fk_note_tp` FOREIGN KEY (`idPdf`) REFERENCES `tp` (`idPdf`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `tp`
+-- Constraints for table `tp`
 --
 ALTER TABLE `tp`
   ADD CONSTRAINT `fk_tp_eleve` FOREIGN KEY (`idEleve`) REFERENCES `eleve` (`idEleve`) ON DELETE CASCADE ON UPDATE CASCADE;
