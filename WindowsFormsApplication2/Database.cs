@@ -224,5 +224,17 @@ namespace WindowsFormsApplication2
             r.Close();
             return retour;
         }
+
+        public static void BackupDatabase(string backUpFile = "C:/Users/Paul/Desktop/databackup/")
+        {
+            //ServerConnection con = new ServerConnection(@"xxxxx\SQLEXPRESS");
+            using (MySqlCommand cmd = new MySqlCommand())
+            {
+                using (MySqlBackup mb = new MySqlBackup(cmd))
+                {
+                    mb.ExportToFile(backUpFile);
+                }
+            }
+        }
     }
 }
