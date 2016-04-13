@@ -239,7 +239,7 @@
             this.supprimerToolStripMenuItem,
             this.modifierToolStripMenuItem});
             this.utilisateurToolStripMenuItem.Name = "utilisateurToolStripMenuItem";
-            this.utilisateurToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.utilisateurToolStripMenuItem.Size = new System.Drawing.Size(149, 24);
             this.utilisateurToolStripMenuItem.Text = "Professeur";
             // 
             // ajouterToolStripMenuItem1
@@ -268,7 +268,7 @@
             this.ajouterToolStripMenuItem2,
             this.supprimerToolStripMenuItem1});
             this.eleveToolStripMenuItem.Name = "eleveToolStripMenuItem";
-            this.eleveToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.eleveToolStripMenuItem.Size = new System.Drawing.Size(149, 24);
             this.eleveToolStripMenuItem.Text = "Eleve";
             // 
             // ajouterToolStripMenuItem2
@@ -290,20 +290,20 @@
             this.exporterToolStripMenuItem,
             this.importerToolStripMenuItem});
             this.sauvegardeToolStripMenuItem.Name = "sauvegardeToolStripMenuItem";
-            this.sauvegardeToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.sauvegardeToolStripMenuItem.Size = new System.Drawing.Size(149, 24);
             this.sauvegardeToolStripMenuItem.Text = "Sauvegarde";
             // 
             // exporterToolStripMenuItem
             // 
             this.exporterToolStripMenuItem.Name = "exporterToolStripMenuItem";
-            this.exporterToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.exporterToolStripMenuItem.Size = new System.Drawing.Size(132, 24);
             this.exporterToolStripMenuItem.Text = "Exporter";
             this.exporterToolStripMenuItem.Click += new System.EventHandler(this.exporterToolStripMenuItem_Click);
             // 
             // importerToolStripMenuItem
             // 
             this.importerToolStripMenuItem.Name = "importerToolStripMenuItem";
-            this.importerToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.importerToolStripMenuItem.Size = new System.Drawing.Size(132, 24);
             this.importerToolStripMenuItem.Text = "Importer";
             // 
             // compteToolStripMenuItem
@@ -347,6 +347,7 @@
             this.chart1.Text = "chart1";
             title1.Name = "Graphe";
             this.chart1.Titles.Add(title1);
+            this.chart1.Visible = false;
             // 
             // chart2
             // 
@@ -366,6 +367,7 @@
             this.chart2.Size = new System.Drawing.Size(352, 259);
             this.chart2.TabIndex = 2;
             this.chart2.Text = "chart2";
+            this.chart2.Visible = false;
             this.chart2.Click += new System.EventHandler(this.chart2_Click);
             // 
             // chart3
@@ -386,6 +388,7 @@
             this.chart3.Size = new System.Drawing.Size(470, 363);
             this.chart3.TabIndex = 3;
             this.chart3.Text = "chart3";
+            this.chart3.Visible = false;
             this.chart3.Click += new System.EventHandler(this.chart3_Click);
             // 
             // PagePrincipal
