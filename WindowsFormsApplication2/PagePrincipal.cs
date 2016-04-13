@@ -297,5 +297,10 @@ namespace WindowsFormsApplication2
         {
             new Form1(chart3).Show();
         }
+
+        private void exporterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
