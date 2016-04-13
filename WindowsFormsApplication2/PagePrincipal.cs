@@ -303,6 +303,7 @@ namespace WindowsFormsApplication2
         private void exporterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //test de push
+            Database.BackupDatabase();
         }
     }
 }
