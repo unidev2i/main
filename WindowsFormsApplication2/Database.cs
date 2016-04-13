@@ -30,7 +30,7 @@ namespace WindowsFormsApplication2
 
         public static string DatabaseName { get; private set; }
 
-        public static void Connect(string ip="localhost", string login="root", string pass="", string database="mydb5")
+        public static void Connect(string ip="localhost", string login="root", string pass="", string database="mydb")
         {
             var builder = new MySqlConnectionStringBuilder
             {
@@ -77,7 +77,7 @@ namespace WindowsFormsApplication2
             var retour = command.ExecuteReader();
 
             if (!retour.Read())
-            {
+            {//JE RAJOUTE UN COMMENTAIRE
                 retour.Close();
                 return -1;
             }
